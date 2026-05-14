@@ -1,2 +1,2 @@
 FROM atendai/evolution-api:latest
-  RUN rm -f /app/.env
+  RUN find /app -name ".env" -delete 2>/dev/null || true
