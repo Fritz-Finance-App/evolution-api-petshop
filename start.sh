@@ -5,7 +5,8 @@
   echo "=== Preparando diretórios ==="
   mkdir -p /evolution/instances
   echo "=== Copiando migrations ==="
-  cp -r /evolution/prisma/postgresql-migrations /evolution/prisma/migrations 2>&1 || echo "ERRO no cp"
+  mkdir -p /evolution/prisma/migrations && cp -r /evolution/prisma/postgresql-migrations/.
+  /evolution/prisma/migrations/ 2>&1 || echo "ERRO no cp"
   echo "=== Rodando migrations ==="
   cd /evolution && ./node_modules/.bin/prisma migrate deploy --schema /evolution/prisma/postgresql-schema.prisma 2>&1
   echo "=== Iniciando app ==="
