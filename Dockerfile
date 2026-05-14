@@ -1,4 +1,5 @@
-FROM atendai/evolution-api:latest
+ FROM atendai/evolution-api:latest
+  RUN find /evolution -name ".env" -delete 2>/dev/null || true
   COPY start.sh /app/start.sh
   RUN sed -i 's/\r//' /app/start.sh && chmod +x /app/start.sh
   ENTRYPOINT ["/bin/sh", "/app/start.sh"]
